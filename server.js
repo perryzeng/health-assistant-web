@@ -74,7 +74,7 @@ ${weightChange !== null ? `- 近期体重变化：${weightChange > 0 ? '+' : ''}
   }
 })
 
-app.get('*', (req, res) => {
+app.get('/{*splat}', (req, res) => {
   res.sendFile(join(__dirname, 'dist', 'index.html'))
 })
 
