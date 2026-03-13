@@ -75,7 +75,9 @@ ${weightChange !== null ? `- 近期体重变化：${weightChange > 0 ? '+' : ''}
 })
 
 app.get('/{*splat}', (req, res) => {
-  res.sendFile(join(__dirname, 'dist', 'index.html'))
+  res.sendFile(join(__dirname, 'dist', 'index.html'), (err) => {
+    if (err) res.status(500).send('Build not found. Please check Railway build logs.')
+  })
 })
 
 app.listen(PORT, () => {
